@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Tuto Vue JS</title>
@@ -13,17 +13,32 @@
 </div>
 
 <div  id="app">
-    <input type="text" @keyup.13="pushList" v-model="element">
+    <input class="input_item" type="text" placeholder="item..." @keyup.13="pushList" v-model="element">
     <button class="button" @click="pushList">ajouter</button>
+
+    <br>
     <h1>Liste</h1>
+    <progress id="progressTodo" max="100" value="0"></progress>
+    <button class="button" @click="changeProgress">Try it</button>
     <ul>
-        <li v-for="item in items">{{item}}</li>
+        <div class="listItem">
+        <li v-for="todo, index in todos">
+            {{todo}}
+            <button class="button_list" @click="remove(index)">done</button>
+        </li>
+        </div>
     </ul>
+
 
 </div>
 
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 <script src="js/app.js"></script>
+<script src="js/jstests.js"></script>
 
 </body>
 </html>

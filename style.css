@@ -52,9 +52,34 @@ body {
     margin: 2vh;
     outline: none;
 }
+.button_list{
+    border-radius: 5vh;
+    background-color: transparent;
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid black;
+    margin-inside: 1vh;
+    outline: none;
+    margin-left: auto;
+}
 .button:active{
-    border: 5px solid gray;
+    background-color: #FFDBE7;
+    border: 1px solid darkred;
 }
 .fill{
     flex-grow: 1;
+}
+.input_item{
+    border-color: transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+.listItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    background-color: #D3FFD0;
+    flex-direction: column;
 }
