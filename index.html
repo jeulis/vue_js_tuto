@@ -22,8 +22,9 @@
     <button class="button" @click="changeProgress">Try it</button>
     <ul>
         <div class="listItem">
-        <li v-for="todo, index in todos">
+        <li class="list" v-for="todo, index in todos">
             {{todo}}
+
             <button class="button_list" @click="remove(index)">done</button>
         </li>
         </div>

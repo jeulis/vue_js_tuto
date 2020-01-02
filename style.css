@@ -52,15 +52,28 @@ body {
     margin: 2vh;
     outline: none;
 }
+.list{
+    display: flex;
+    border: 1px solid transparent;
+    border-radius: 5vh ;
+    background-color: #fff7cb;
+    margin: 1vh;
+}
 .button_list{
+    display: flex;
     border-radius: 5vh;
-    background-color: transparent;
+    background-color: white;
     width: fit-content;
     height: fit-content;
     border: 1px solid black;
     margin-inside: 1vh;
     outline: none;
     margin-left: auto;
+}
+.button_list:active{
+    border-color: green;
+    color: white;
+    background-color: black;
 }
 .button:active{
     background-color: #FFDBE7;
@@ -78,8 +91,7 @@ body {
 .listItem{
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: max-content;
-    background-color: #D3FFD0;
+    /*align-items: center;*/
+    width: 40vw;
     flex-direction: column;
 }
