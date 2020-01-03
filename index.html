@@ -9,32 +9,76 @@
 
 <body>
 <div class="top_title_container">
-    <h1 class="top_title">Tutoriel VueJS</h1>
+    <h1 class="top_title">Todo List VueJS</h1>
+    <button class="button" value="X"></button>
 </div>
 
-<div  id="app">
-    <input class="input_item" type="text" placeholder="item..." @keyup.13="pushList" v-model="element">
-    <button class="button" @click="pushList">ajouter</button>
-
-    <br>
-    <h1>Liste</h1>
-    <progress id="progressTodo" max="100" value="0"></progress>
-    <button class="button" @click="changeProgress">Try it</button>
-    <ul>
-        <div class="listItem">
-        <li class="list" v-for="todo, index in todos">
-            {{todo}}
-
-            <button class="button_list" @click="remove(index)">done</button>
-        </li>
+<div class="page" id="app">
+    <div class="up_bar">
+        <div class="input_item_container">
+            <input class="input_item" type="text" placeholder="item..." @keyup.13.exact="pushList" v-model="element">
         </div>
-    </ul>
 
+        <div class="button_container">
+            <button class="button" @click="pushList">ajouter</button>
+        </div>
+
+        <div class="progress_bar_container">
+            <progress class="progress_bar" id="progressTodo" max="100" value="0"></progress>
+        </div>
+        {{todoList.length}} %
+
+        <div class="button_container">
+            <button class="button" @click="clearList">Clear All</button>
+        </div>
+
+
+        <div id="npb" class="progress-bar">
+            <div data-size="9" class="progress"></div>
+        </div>
+
+    </div>
+
+    <div class="listes">
+        <div class="todo">
+            <h1 class="title_todo">A faire </h1>
+            <div class="list_todo">
+                <ul class="ul">
+                    <div class="listItem">
+                        <li class="item_todo" v-for="todo, index in todoList">
+
+                            {{todo}}
+                            <!--                                <div class="div"></div>-->
+                            <div class="button_list_todo_container">
+                                <button class="button_list_todo" @click="move(index, todo)">Done</button>
+                            </div>
+
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="done">
+            <h1 class="title_done">Terminé </h1>
+            <div class="list_done">
+                <ul class="ul">
+                    <div class="listItem">
+                        <li class="item_done" v-for="done, index in doneList">
+
+                            <strike>{{done}}</strike>
+                            <!--                                <div class="div"></div>-->
+                            <div class="button_list_done_container">
+                                <button class="button_list_done" @click="remove(index,done)">Undo</button>
+                            </div>
+
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 </div>
-
-
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>

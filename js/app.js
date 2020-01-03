@@ -1,39 +1,54 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        todos: ['finir cette liste'],
+        todoList: ['Finir cette liste 1', 'Finir cette liste 2', 'Finir cette liste 3'],
+        doneList: ['HEHEHE', 'fait'],
         element: null,
         listNumber: 0,
-
+        number: 9,
 
 
     },
-    methods:{
-        pushList(){
-            if (this.element !== '' & this.element !== null){
-                this.todos.push(this.element);
-                console.log('item ajouté');
-            }
-            else{
+    methods: {
+        initiateProgressBar() {
+
+        },
+        pushList() {
+            if (this.element !== '' & this.element !== null & this.element !== ' ') {
+                this.todoList.push(this.element);
+                console.log('item : "' + this.element + '" a été ajouté');
+            } else {
                 console.log('item vide !')
             }
             this.element = '';
+            this.updateLength()
         },
-        remove (index) {
-            this.todos.splice(index, 1)
-            // this.$delete(this.todos, index)
+        move(index, todo) {
+            this.doneList.push(todo);
+            this.todoList.splice(index, 1);
+            // this.$delete(this.todoList, index)
+
+            this.updateLength();
+
         },
-        changeProgress : function(){
-            var progressValue = document.getElementById("progressTodo").value;
+        remove(index, done) {
+            this.todoList.push(done);
+            this.doneList.splice(index, 1)
+            // this.$delete(this.todoList, index)
 
-            document.getElementById("progressTodo").value += 5;
+            this.updateLength()
+        },
+        clearList() {
+            this.todoList = [];
+            this.updateLength()
 
-            if (progressValue >=100){
-                document.getElementById("progressTodo").value = 0;
-            }
+
+        },
+        updateLength() {
+            document.getElementById("progressTodo").value = this.todoList.length;
+        },
 
 
-        }
     }
 
 });
