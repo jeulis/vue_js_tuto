@@ -21,6 +21,13 @@ body {
     justify-content: center;
     /*border-bottom: white;*/
     /*filter: drop-shadow(0 0 0.1rem white);*/
+    color: white;
+}
+
+.alert {
+    color: red;
+    font-family: Bahnschrift;
+    font-size: 20px;
 }
 
 .top_title {
@@ -41,7 +48,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #011638;
-    height: 90vh;
+    height: 100%;
 }
 
 .button_container {
@@ -86,6 +93,12 @@ body {
 
 }
 
+.button_list_todo_container:hover {
+    filter: drop-shadow(0 0 0.25em white);
+    border: 1px solid #7aa42b;
+    background-color: transparent;
+}
+
 .button_list_todo {
     outline: none;
     color: #C3F73A;
@@ -94,11 +107,35 @@ body {
     width: 5vw;
 }
 
-.button_list_todo_container:hover {
+.button_list_doing_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10vh;
+    background-color: #011638;
+    border: 1px solid #f7b200;
+    filter: drop-shadow(0 0 0.1rem #c79000);
+    margin-left: auto;
+    margin-bottom: 1vh;
+
+}
+
+.button_list_doing_container:hover {
     filter: drop-shadow(0 0 0.25em white);
-    border: 1px solid #7aa42b;
+    border: 1px solid #f7b200;
     background-color: transparent;
 }
+
+.button_list_doing {
+    outline: none;
+    color: #f7b200;
+    background-color: transparent;
+    border: 1px solid transparent;
+    width: 5vw;
+}
+
 
 .button_list_done_container {
     display: flex;
@@ -115,6 +152,12 @@ body {
 
 }
 
+.button_list_done_container:hover {
+    filter: drop-shadow(0 0 0.25em white);
+    border: 1px solid #c256f7;
+    background-color: transparent;
+}
+
 .button_list_done {
     outline: none;
     color: #c256f7;
@@ -123,11 +166,6 @@ body {
     width: 5vw;
 }
 
-.button_list_done_container:hover {
-    filter: drop-shadow(0 0 0.25em white);
-    border: 1px solid #c256f7;
-    background-color: transparent;
-}
 
 .button_list:active {
     color: white;
@@ -178,6 +216,15 @@ body {
     word-break: break-word;
 }
 
+.item_doing {
+    display: flex;
+    margin: 1vh;
+    filter: drop-shadow(0 0 0.1rem #f7b200);
+    border: 1px solid transparent;
+    border-bottom: 1px groove #f7b200;
+    word-break: break-word;
+}
+
 .item_done {
     display: flex;
     margin: 1vh;
@@ -204,7 +251,7 @@ body {
 .todo {
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    width: 33%;
     background-color: #011638;
     margin: 1vh;
     border: 1px groove transparent;
@@ -218,10 +265,27 @@ body {
     filter: drop-shadow(0 0 25rem #C3F73A);
 }
 
+.doing {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    background-color: #011638;
+    margin: 1vh;
+    border: 1px groove transparent;
+    filter: drop-shadow(0 0 0.25rem #f7b200);
+    border-radius: 1vh;
+    color: white;
+}
+
+.doing:hover {
+    border: 1px groove #f7b200;
+    filter: drop-shadow(0 0 25rem #f7b200);
+}
+
 .done {
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    width: 33%;
     background-color: #011638;
     margin: 1vh;
     border: 1px solid transparent;
@@ -236,13 +300,6 @@ body {
     filter: drop-shadow(0 0 25rem #c256f7);
 }
 
-.list_todo {
-    overflow-y: auto;
-}
-
-.list_done {
-    overflow-y: auto;
-}
 
 p {
     margin: 1vh;
@@ -283,6 +340,11 @@ ul {
     margin-right: 2vh;
 }
 
+/*////////////////////////// scroll bar to do /////////////////////////////*/
+.list_todo {
+    overflow-y: auto;
+}
+
 .list_todo::-webkit-scrollbar {
     width: 2vh;
 }
@@ -302,9 +364,38 @@ ul {
 /* Handle on hover */
 .list_todo::-webkit-scrollbar-thumb:hover {
     background-color: #729b2b;
-
 }
 
+/*/////////////////////////// scroll bar doing ////////////////////////////*/
+.list_doing {
+    overflow-y: auto;
+}
+
+.list_doing::-webkit-scrollbar {
+    width: 2vh;
+}
+
+/* Track */
+.list_doing::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 1vh;
+}
+
+/* Handle */
+.list_doing::-webkit-scrollbar-thumb {
+    background: #966a00;
+    border-radius: 1vh;
+}
+
+/* Handle on hover */
+.list_doing::-webkit-scrollbar-thumb:hover {
+    background-color: #f7b200;
+}
+
+/*/////////////////////////// scrollbar done ////////////////////////////*/
+.list_done {
+    overflow-y: auto;
+}
 
 .list_done::-webkit-scrollbar {
     width: 2vh;
@@ -325,7 +416,6 @@ ul {
 /* Handle on hover */
 .list_done::-webkit-scrollbar-thumb:hover {
     background-color: #c256f7;
-
 }
 
 .progress-bar {
@@ -349,3 +439,42 @@ ul {
     transition: width 0.5s ease-in;
 }
 
+.top_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button_top_list_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    /*border-radius: 10vh;*/
+    background-color: #011638;
+    border: 1px solid white;
+    filter: drop-shadow(0 0 0.1rem red);
+    margin-left: 2vh;
+    margin-right: auto;
+    margin-top: 1%;
+    /*margin-bottom: 1vh;*/
+
+}
+
+.button_top_list_container:hover {
+    filter: drop-shadow(0 0 0.25em red);
+    border: 1px solid red;
+    background-color: transparent;
+}
+
+.button_top_list {
+    outline: none;
+    color: white;
+    background-color: transparent;
+    border: 1px solid transparent;
+    width: 5vw;
+}
+
+
+/*///////////////////////popup/////////////////////////*/

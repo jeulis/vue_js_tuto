@@ -8,40 +8,53 @@
 </head>
 
 <body>
-<div class="top_title_container">
-    <h1 class="top_title">Todo List VueJS</h1>
-    <button class="button" value="X"></button>
-</div>
+
 
 <div class="page" id="app">
+    <div class="top_title_container">
+        <h1 class="top_title">Todo List VueJS </h1>
+        <p class="alert">{{alert}}</p>
+    </div>
     <div class="up_bar">
         <div class="input_item_container">
             <input class="input_item" type="text" placeholder="item..." @keyup.13.exact="pushList" v-model="element">
         </div>
 
         <div class="button_container">
-            <button class="button" @click="pushList">ajouter</button>
+            <button class="button" @click="pushList">Ajouter</button>
         </div>
 
         <div class="progress_bar_container">
             <progress class="progress_bar" id="progressTodo" max="100" value="0"></progress>
         </div>
-        {{todoList.length}} %
+        {{doneLengthValue}} % terminé --
+
+        {{allListsLength}} tâches au total --
+
+        {{doingList.length}} tâches en cours ({{currentlyDoing}} %)
 
         <div class="button_container">
-            <button class="button" @click="clearList">Clear All</button>
+            <button class="button" @click="clearList('all')">Effacer tout</button>
+            <input type="checkbox" v-model="alert_confirm">
         </div>
 
 
-        <div id="npb" class="progress-bar">
-            <div data-size="9" class="progress"></div>
-        </div>
+        <!--        <div id="npb" class="progress-bar">-->
+        <!--            <div data-size="9" class="progress"></div>-->
+        <!--        </div>-->
 
     </div>
 
     <div class="listes">
         <div class="todo">
-            <h1 class="title_todo">A faire </h1>
+            <div class="top_list">
+                <div class="top_title_container">
+                    <h1 class="title_todo">A faire </h1>
+                    <div class="button_top_list_container">
+                        <button class="button_top_list" @click="clearList('todo')">Effacer</button>
+                    </div>
+                </div>
+            </div>
             <div class="list_todo">
                 <ul class="ul">
                     <div class="listItem">
@@ -50,7 +63,30 @@
                             {{todo}}
                             <!--                                <div class="div"></div>-->
                             <div class="button_list_todo_container">
-                                <button class="button_list_todo" @click="move(index, todo)">Done</button>
+                                <button class="button_list_todo" @click="moveToDoing(index, todo)">En cours</button>
+                            </div>
+
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="doing">
+            <div class="top_title_container">
+                <h1 class="title_todo">En cours </h1>
+                <div class="button_top_list_container">
+                    <button class="button_top_list" @click="clearList('doing')">Effacer</button>
+                </div>
+            </div>
+            <div class="list_doing">
+                <ul class="ul">
+                    <div class="listItem">
+                        <li class="item_doing" v-for="doing, index in doingList">
+
+                            {{doing}}
+                            <!--                                <div class="div"></div>-->
+                            <div class="button_list_doing_container">
+                                <button class="button_list_doing" @click="moveToDone(index, doing)">Terminé</button>
                             </div>
 
                         </li>
@@ -59,7 +95,13 @@
             </div>
         </div>
         <div class="done">
-            <h1 class="title_done">Terminé </h1>
+            <div class="top_title_container">
+                <h1 class="title_done">Terminé </h1>
+                <div class="button_top_list_container">
+                    <button class="button_top_list" @click="clearList('done')">Effacer</button>
+                </div>
+            </div>
+
             <div class="list_done">
                 <ul class="ul">
                     <div class="listItem">
@@ -68,7 +110,7 @@
                             <strike>{{done}}</strike>
                             <!--                                <div class="div"></div>-->
                             <div class="button_list_done_container">
-                                <button class="button_list_done" @click="remove(index,done)">Undo</button>
+                                <button class="button_list_done" @click="moveToTodo(index,done)">Défaire</button>
                             </div>
 
                         </li>
