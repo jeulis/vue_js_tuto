@@ -63,6 +63,7 @@ var vm = new Vue({
                 this.doneList = [];
                 this.todoList = [];
                 this.doingList = [];
+                this.alert_confirm = false;
             }
             this.getAllLength()
 
