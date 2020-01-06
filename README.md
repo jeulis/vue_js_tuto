@@ -1,2 +1,4 @@
 # vue_js_Todo List
-vue js tests et tutos, todo list
+Todolist test from basic knowledge
+
+VueJS / CSS / HTML
