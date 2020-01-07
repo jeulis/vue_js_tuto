@@ -1,7 +1,7 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        version: 1.2,
+        version: 1.3,
         todoList: [],
         doingList: [],
         doneList: [],
