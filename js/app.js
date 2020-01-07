@@ -11,7 +11,8 @@ var vm = new Vue({
         doneLengthValue: null,
         currentlyDoing: null,
         alert: '',
-        alert_confirm: false
+        alert_confirm: false,
+        selectedList: '',
 
 
     },
@@ -48,6 +49,31 @@ var vm = new Vue({
             // this.$delete(this.todoList, index)
 
             this.getAllLength();
+
+        },
+        selectList(listSelected){
+            if(listSelected == 'todo'){
+                this.selectedList = 'todo'
+            }
+            if(listSelected == 'doing'){
+                this.selectedList = 'doing';
+            }
+            if(listSelected == 'done'){
+                this.selectedList = 'done'
+            }
+        },
+        removeItem(index){
+            if(this.selectedList == 'todo'){
+                this.todoList.splice(index, 1);
+            }
+            if(this.selectedList == 'doing'){
+                this.doingList.splice(index, 1);
+            }
+            if(this.selectedList == 'done'){
+                this.doneList.splice(index, 1);
+            }
+            this.getAllLength()
+
 
         },
         clearList(listName) {
