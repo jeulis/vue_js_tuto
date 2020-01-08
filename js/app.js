@@ -1,7 +1,7 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        version: 1.3,
+        version: 1.4,
         todoList: [],
         doingList: [],
         doneList: [],
@@ -95,15 +95,14 @@ var vm = new Vue({
             this.getAllLength()
 
         },
-        donePercentage() {
+        percentages() {
             this.doneLengthValue = (this.doneList.length * 100) / this.allListsLength;
             this.doneLengthValue = Math.round(this.doneLengthValue);
             if (this.doingList == 0 & this.todoList == 0 & this.doneList != null) {
                 this.doneLengthValue = 100;
             }
             document.getElementById("progressTodo").value = this.doneLengthValue;
-        },
-        doingPercentage() {
+
             this.currentlyDoing = (this.doingList.length * 100) / this.allListsLength;
             this.currentlyDoing = Math.round(this.currentlyDoing);
 
@@ -111,8 +110,7 @@ var vm = new Vue({
         },
         getAllLength() {
             this.allListsLength = this.todoList.length + this.doingList.length + this.doneList.length;
-            this.donePercentage();
-            this.doingPercentage();
+            this.percentages();
             return this.allListsLength;
         },
         resetErrors() {
